@@ -69,10 +69,7 @@ else
 		do
 			#echo -e ">>> descargando $line"
 			ar1=$(echo "$line" | sed 's/^.\{40\}//' | sed -e 's/.$//' | sed -e 's/-/_/g' | awk -F _ '{print $1 "_" $2 "_" $3 "_" $4 "_" $5}')
-			# echo "$url2"
-			#echo "$ar1"
 			ar2=$(echo "$ar1"".pdf")
-			#echo "$ar2"
 			xvfb-run wkhtmltopdf $line $ar2 > /dev/null 2>&1
 			sleep 1
 		done < noticias.txt
